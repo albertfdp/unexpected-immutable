@@ -26,6 +26,7 @@
     "immutable": "^3.8.1"
   },
   "devDependencies": {
+    "immutable": "^3.8.1",
     "mocha": "^2.5.3",
     "unexpected": "^10.13.3"
   }
