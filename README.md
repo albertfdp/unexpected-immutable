@@ -1,5 +1,7 @@
 # unexpected-immutable
 
+[![Build Status](https://travis-ci.org/albertfdp/unexpected-immutable.svg?branch=master)](https://travis-ci.org/albertfdp/unexpected-immutable)
+
 This plugin provides a set of  [unexpected](https://unexpected.js.org) types and assertions for [immutable-js](http://facebook.github.io/immutable-js/) library for JavaScript collections.
 
 ## Installation
