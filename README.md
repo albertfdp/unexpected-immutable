@@ -4,6 +4,8 @@
 
 This plugin provides a set of  [unexpected](https://unexpected.js.org) types and assertions for [immutable-js](http://facebook.github.io/immutable-js/) library for JavaScript collections.
 
+![unexpected-immutable-watermelons](http://i.giphy.com/fQa7ew7maOC5y.gif)
+
 ## Installation
 
 Install via [npm](http://npmjs.org/):
