@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha",
-    "lint": "standard"
+    "lint": "standard",
+    "travis": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",
