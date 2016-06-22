@@ -81,7 +81,6 @@ describe('Collection assertions', () => {
 
   types.filter(type => type !== MAP && type !== ORDERED_MAP)
     .forEach(type => {
-      const emptyCollection = CollectionFactory(type, [])
       const fruitCollection = CollectionFactory(type, [ 'apple', 'banana', 'strawberry', 'apple' ])
 
       describe('to contain assertion', () => {
@@ -130,7 +129,7 @@ const expectedOutputForType = type => {
           `  'strawberry',\n` +
           `  'apple'\n` +
           `  // missing 'pears'\n` +
-          `])`
+          '])'
       )
     case SET:
     case ORDERED_SET:
@@ -142,7 +141,7 @@ const expectedOutputForType = type => {
         `  'banana',\n` +
         `  'strawberry'\n` +
         `  // missing 'pears'\n` +
-        `])`
+        '])'
       )
     default:
       return ''
@@ -162,7 +161,7 @@ const expectedOutputForTypeWithNot = type => {
         `  'banana',\n` +
         `  'strawberry',\n` +
         `  'apple' // should be removed\n` +
-        `])`
+        '])'
       )
     case SET:
     case ORDERED_SET:
@@ -173,7 +172,7 @@ const expectedOutputForTypeWithNot = type => {
         `  'apple', // should be removed\n` +
         `  'banana',\n` +
         `  'strawberry'\n` +
-        `])`
+        '])'
       )
     default:
       return ''

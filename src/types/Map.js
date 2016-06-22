@@ -111,7 +111,7 @@ const MapType = {
     const suffixOutput = this.suffix(output.clone(), actual)
     const actualKeys = this.getKeys(actual)
     const expectedKeys = this.getKeys(expected)
-    const keys = new Set([ ...actualKeys, ...expectedKeys]).toArray()
+    const keys = new Set([ ...actualKeys, ...expectedKeys ]).toArray()
 
     output.append(prefixOutput).nl(prefixOutput.isEmpty() ? 0 : 1)
 

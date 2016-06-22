@@ -1,8 +1,8 @@
 const collectionAssertions = function (expect) {
   expect.addAssertion(
     [
-      `<Collection|Map> [not] to have size <number>`,
-      `<Collection|Map> [not] to have length <number>`
+      '<Collection|Map> [not] to have size <number>',
+      '<Collection|Map> [not] to have length <number>'
     ],
     (expect, subject, length) => {
       if (!expect.flags.not) {
@@ -14,27 +14,27 @@ const collectionAssertions = function (expect) {
 
   expect.addAssertion(
     [
-      `<Collection|Map> [not] to be empty`
+      '<Collection|Map> [not] to be empty'
     ],
     (expect, subject) => expect(subject, '[not] to have size', 0)
   )
 
   expect.addAssertion(
     [
-      `<Collection|Map> to be non-empty`
+      '<Collection|Map> to be non-empty'
     ],
     (expect, subject) => expect(subject, 'not to be empty')
   )
 
   expect.addAssertion(
     [
-      `<Collection> [not] to contain <any+>`,
-      `<Collection> [not] to include <any+>`,
+      '<Collection> [not] to contain <any+>',
+      '<Collection> [not] to include <any+>'
     ],
     (expect, subject, value) => {
       expect.withError(() => {
         expect(subject.contains(value), '[not] to be true')
-      }, err => {
+      }, () => {
         expect.fail({
           diff: function (output, diff, inspect, equal) {
             output.inline = true

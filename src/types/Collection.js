@@ -1,4 +1,4 @@
-const { Collection, is } = require('immutable')
+const { is } = require('immutable')
 
 const DEFAULT_DEPTH = 3
 
@@ -28,14 +28,14 @@ const CollectionType = {
     }
 
     let inspectedItems = []
-    collection.forEach(item => {
+    collection.forEach((item) => {
       inspectedItems.push(inspect(item))
     })
 
     const currentDepth = DEFAULT_DEPTH - Math.min(DEFAULT_DEPTH, depth)
     let maxLineLength = (output.preferredWith - 20) - currentDepth * output.indentationWidth - 2
     let width = 0
-    const multipleLines = this.forceMultipleLines || inspectedItems.some(item => {
+    const multipleLines = this.forceMultipleLines || inspectedItems.some((item) => {
       if (item.isMultiline()) { return true }
 
       const size = item.size()

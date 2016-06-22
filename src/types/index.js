@@ -7,7 +7,6 @@ const SeqType = require('./Seq')
 const SetType = require('./Set')
 const StackType = require('./Stack')
 
-
 const types = {
   installInto: function (expect) {
     expect.addType(CollectionType)

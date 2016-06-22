@@ -2,11 +2,11 @@ const Immutable = require('immutable')
 const expect = require('../../test/unexpected-immutable')
 const { CollectionFactory, types } = require('../utils')
 
-expect.addAssertion(`<any> to inspect as <string>`, (expect, subject, value) => {
+expect.addAssertion('<any> to inspect as <string>', (expect, subject, value) => {
   expect(expect.inspect(subject).toString(), 'to equal', value)
 })
 
-expect.addAssertion(`<array> to produce a diff of <string>`, (expect, subject, value) => {
+expect.addAssertion('<array> to produce a diff of <string>', (expect, subject, value) => {
   expect.errorMode = 'bubble'
   expect(expect.diff(
     subject[0],
@@ -16,7 +16,6 @@ expect.addAssertion(`<array> to produce a diff of <string>`, (expect, subject, v
 
 describe('Immutable types', () => {
   types.forEach(type => {
-    const emptyCollection = CollectionFactory(type, [])
     const fruitCollection = CollectionFactory(type, [ 'apple', 'banana' ])
 
     describe(`with ${type}`, () => {
@@ -26,7 +25,7 @@ describe('Immutable types', () => {
             `${type}({\n` +
             `  apple: 1,\n` +
             `  banana: 1\n` +
-            `})`
+            '})'
           )
         } else {
           expect(fruitCollection, 'to inspect as', `${type}([ 'apple', 'banana' ])`)
@@ -56,7 +55,7 @@ describe('Immutable types', () => {
             `  apple: 1, // should be removed\n` +
             `  banana: 1\n` +
             `  // missing strawberry: 1\n` +
-            `})`
+            '})'
           )
         } else {
           expect([ fruitCollection, CollectionFactory(type, [ 'banana', 'strawberry' ]) ],
@@ -65,7 +64,7 @@ describe('Immutable types', () => {
             `  'apple', // should be removed\n` +
             `  'banana'\n` +
             `  // missing 'strawberry'\n` +
-            `])`
+            '])'
           )
         }
       })
@@ -75,12 +74,12 @@ describe('Immutable types', () => {
   describe('with type Map', () => {
     it('diffs two complex immutable objects', () => {
       const a = new Immutable.Map({
-        numbers: Immutable.List([ 0, 1, 2, 3, 4]),
+        numbers: Immutable.List([ 0, 1, 2, 3, 4 ]),
         names: Immutable.Map({ foo: 1, bar: 1 })
       })
 
       const b = new Immutable.Map({
-        numbers: Immutable.List([ 0, 2, 3, 4, 5]),
+        numbers: Immutable.List([ 0, 2, 3, 4, 5 ]),
         names: Immutable.Map({ foo: 1, bar: 5 })
       })
 
@@ -98,7 +97,7 @@ describe('Immutable types', () => {
         `    foo: 1,\n` +
         `    bar: 1 // should equal 5\n` +
         `  })\n` +
-        `})`
+        '})'
       )
     })
   })

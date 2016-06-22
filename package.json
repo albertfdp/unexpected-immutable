@@ -4,7 +4,8 @@
   "description": "Plugin for unexpected for asserting immutable data structures",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "npm run lint && mocha",
+    "lint": "standard"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,17 @@
     "immutable": "^3.8.1"
   },
   "devDependencies": {
+    "babel-eslint": "^6.0.5",
     "immutable": "^3.8.1",
     "mocha": "^2.5.3",
+    "standard": "^7.1.2",
     "unexpected": "^10.13.3"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "it",
+      "describe"
+    ]
   }
 }
