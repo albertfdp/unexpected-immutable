@@ -127,7 +127,7 @@ const MapType = {
         .block(function () {
           let valueOutput
           const annotation = output.clone()
-          const conflicting = !equal(actual.get(key), expected.get(key)) // TODO
+          const conflicting = !equal(actual.get(key), expected.get(key))
           let isInlineDiff = false
           if (conflicting) {
             if (!expected.has(key)) {

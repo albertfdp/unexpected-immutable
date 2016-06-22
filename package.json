@@ -4,7 +4,7 @@
   "description": "Plugin for unexpected for asserting immutable data structures",
   "main": "src/index.js",
   "scripts": {
-    "test": "npm run lint && mocha",
+    "test": "mocha",
     "lint": "standard"
   },
   "repository": {

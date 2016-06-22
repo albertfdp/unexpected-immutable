@@ -4,7 +4,7 @@ const DEFAULT_DEPTH = 3
 
 const CollectionType = {
   name: 'Collection',
-  base: 'object',
+  base: 'array-like',
   indent: true,
   identify: false,
   equal: function (a, b) {
@@ -69,6 +69,7 @@ const CollectionType = {
     }
   },
   diff: function (actual, expected, output, diff, inspect, equal) {
+    console.log(actual, expected)
     output.inline = true
     const prefixOutput = this.prefix(output.clone(), actual)
     const suffixOutput = this.suffix(output.clone(), actual)
