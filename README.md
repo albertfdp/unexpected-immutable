@@ -9,6 +9,10 @@ This plugin provides a set of  [unexpected](https://unexpected.js.org) types and
 ![unexpected-immutable-watermelons](http://i.giphy.com/fQa7ew7maOC5y.gif)
 > An unexpected immutable watermelon
 
+## Documentation
+
+Read [the documentation](https://albertfdp.github.io/unexpected-immutable/)
+
 ## Installation
 
 Install via [npm](http://npmjs.org/):
