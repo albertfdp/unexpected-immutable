@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "format": "prettier --single-quote --write '{src,test}/**/*.js'",
-    "travis": "npm run lint && npm test"
+    "travis": "npm run lint && npm test",
+    "site:generate": "generate-site --require ./bootstrap-unexpected-markdown.js",
+    "site:update": "generate-site --require ./bootstrap-unexpected-markdown.js --update-examples"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,8 @@
     "jest": "19.0.2",
     "prettier": "0.22.0",
     "unexpected": "^10.13.3",
-    "unexpected-check": "1.12.0"
+    "unexpected-check": "1.12.0",
+    "unexpected-documentation-site-generator": "4.3.0",
+    "unexpected-markdown": "1.7.1"
   }
 }

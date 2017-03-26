@@ -28,7 +28,7 @@ const collectionAssertions = function(expect) {
   );
 
   expect.addAssertion(
-    ['<Map|OrderedMap> [not] to have property <string> <assertion>'],
+    ['<Map|OrderedMap> [not] to have property <string> <assertion?>'],
     (expect, subject, property) => {
       expect.shift(subject.get(property));
     }
