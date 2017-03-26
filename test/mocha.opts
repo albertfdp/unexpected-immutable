@@ -1,3 +1,0 @@
-src/**/**.spec.js
---recursive
---require ./test/unexpected-immutable.js

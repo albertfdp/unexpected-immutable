@@ -4,7 +4,7 @@
   "description": "Plugin for unexpected for asserting immutable data structures",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
     "lint": "standard",
     "travis": "npm run lint && npm test"
   },
@@ -30,7 +30,7 @@
   "devDependencies": {
     "babel-eslint": "7.2.1",
     "immutable": "^3.8.1",
-    "mocha": "3.2.0",
+    "jest": "19.0.2",
     "standard": "9.0.2",
     "unexpected": "^10.13.3"
   },
