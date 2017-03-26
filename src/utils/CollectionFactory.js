@@ -7,37 +7,43 @@ const {
   Seq,
   Set,
   Stack
-} = require('immutable')
+} = require('immutable');
 
 const CollectionFactory = (type, data) => {
   switch (type) {
     case 'List':
-      return new List(data)
+      return new List(data);
     case 'Map': {
-      const keyValue = data.reduce((previous, current) => {
-        previous[current] = (previous[current] || 0) + 1
-        return previous
-      }, {})
-      return new Map(keyValue)
+      const keyValue = data.reduce(
+        (previous, current) => {
+          previous[current] = (previous[current] || 0) + 1;
+          return previous;
+        },
+        {}
+      );
+      return new Map(keyValue);
     }
     case 'OrderedMap': {
-      const keyValue = data.reduce((previous, current) => {
-        previous[current] = (previous[current] || 0) + 1
-        return previous
-      }, {})
-      return new OrderedMap(keyValue)
+      const keyValue = data.reduce(
+        (previous, current) => {
+          previous[current] = (previous[current] || 0) + 1;
+          return previous;
+        },
+        {}
+      );
+      return new OrderedMap(keyValue);
     }
     case 'OrderedSet':
-      return new OrderedSet(data)
+      return new OrderedSet(data);
     case 'Seq':
-      return new Seq(data)
+      return new Seq(data);
     case 'Set':
-      return new Set(data)
+      return new Set(data);
     case 'Stack':
-      return new Stack(data)
+      return new Stack(data);
     default:
-      return new Collection(data)
+      return new Collection(data);
   }
-}
+};
 
-module.exports = CollectionFactory
+module.exports = CollectionFactory;

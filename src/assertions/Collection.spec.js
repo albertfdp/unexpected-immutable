@@ -1,180 +1,219 @@
-const expect = require('../../test/unexpected-immutable')
-const { CollectionFactory, types } = require('../utils')
+const expect = require('../../test/unexpected-immutable');
+const { n, string, integer, pickone } = require('chance-generators')(131);
+
+const { CollectionFactory, types } = require('../utils');
 const {
   LIST,
   MAP,
-  SEQ,
-  SET,
   ORDERED_MAP,
   ORDERED_SET,
+  SEQ,
+  SET,
   STACK
-} = require('../utils/types')
+} = require('../utils/types');
+
+const stringArrays = n(string, integer({ min: 1, max: 20 }));
 
 describe('Collection assertions', () => {
-  types.forEach(type => {
-    const emptyCollection = CollectionFactory(type, [])
-    const fruitCollection = CollectionFactory(type, [ 'apple', 'banana', 'strawberry', 'apple' ])
+  let collection;
 
-    describe(`with type ${type}`, () => {
-      describe('to be empty assertion', () => {
-        it('should succeed', () => {
-          expect(emptyCollection, 'to be empty')
-        })
+  beforeEach(() => {
+    collection = stringArrays();
+  });
 
-        it('should fail', () => {
-          expect(
-            () => expect(fruitCollection, 'to be empty'),
-            'to throw'
-          )
-        })
+  describe('to be empty assertion', () => {
+    it('should succeed', () => {
+      expect(types, 'succeed when asserting', [], 'to be empty');
+    });
 
-        describe('with the not flag', () => {
-          it('should succeed', () => {
-            expect(fruitCollection, 'not to be empty')
-          })
-        })
-      })
+    it('should fail', () => {
+      expect(types, 'fail when asserting', collection, 'to be empty');
+    });
 
-      describe('non-empty assertion', () => {
-        it('should succeed', () => {
-          expect(fruitCollection, 'to be non-empty')
-        })
-      })
-    })
-
-    describe('to have length assertion', () => {
+    describe('with the not flag', () => {
       it('should succeed', () => {
-        if (type === 'List' || type === 'Stack' || type === 'Seq') {
-          expect(fruitCollection, 'to have size', 4)
-        } else {
-          expect(fruitCollection, 'to have size', 3)
-        }
-      })
+        expect(types, 'succeed when asserting', collection, 'not to be empty');
+      });
+    });
+  });
 
-      it('works with the length fallback', () => {
-        if (type === 'List' || type === 'Stack' || type === 'Seq') {
-          expect(fruitCollection, 'to have size', 4)
-        } else {
-          expect(fruitCollection, 'to have size', 3)
-        }
-      })
+  describe('non-empty assertion', () => {
+    it('should succeed', () => {
+      expect(types, 'succeed when asserting', collection, 'to be non-empty');
+    });
 
-      describe('with the not flag', () => {
-        it('should succeed', () => {
-          if (type === 'List' || type === 'Stack' || type === 'Seq') {
-            expect(fruitCollection, 'to have size', 4)
-          } else {
-            expect(fruitCollection, 'to have size', 3)
-          }
-        })
+    it('should fail', () => {
+      expect(types, 'fail when asserting', [], 'to be non-empty');
+    });
+  });
 
-        it('works with the length fallback', () => {
-          if (type === 'List' || type === 'Stack' || type === 'Seq') {
-            expect(fruitCollection, 'to have size', 4)
-          } else {
-            expect(fruitCollection, 'to have size', 3)
-          }
-        })
-      })
-    })
-  })
+  describe('to have size assertion', () => {
+    it('should succeed', () => {
+      expect(
+        types,
+        'succeed when asserting',
+        collection,
+        'to have size',
+        collection.length
+      );
+    });
 
-  types.filter(type => type !== MAP && type !== ORDERED_MAP)
-    .forEach(type => {
-      const fruitCollection = CollectionFactory(type, [ 'apple', 'banana', 'strawberry', 'apple' ])
+    it('should fail', () => {
+      expect(
+        types,
+        'fail when asserting',
+        collection,
+        'to have size',
+        collection.length + 1
+      );
+    });
 
-      describe('to contain assertion', () => {
-        it('should succeed', () => {
-          expect(fruitCollection, 'to contain', 'apple')
-        })
+    describe('with the not flag', () => {
+      it('should succeed', () => {
+        expect(
+          types,
+          'succeed when asserting',
+          collection,
+          'not to have size',
+          0
+        );
+      });
+    });
+  });
 
-        it('should fail with a diff', () => {
-          const expectedOutput = expectedOutputForType(type)
+  describe('to contain assertion', () => {
+    let item;
+    let typeSubset;
+
+    beforeEach(() => {
+      item = pickone(collection)();
+      typeSubset = types.filter(type => type !== MAP && type !== ORDERED_MAP);
+    });
+
+    it('should succeed', () => {
+      expect(
+        typeSubset,
+        'succeed when asserting',
+        collection,
+        'to contain',
+        item
+      );
+    });
+
+    it('should fail with a diff', () => {
+      expect(
+        type => {
           expect(
-            () => expect(fruitCollection, 'to contain', 'pears'),
+            () =>
+              expect(
+                CollectionFactory(type, [
+                  'apple',
+                  'banana',
+                  'strawberry',
+                  'apple'
+                ]),
+                'to contain',
+                'pears'
+              ),
             'to throw',
-            expectedOutput
-          )
-        })
+            expectedOutputForType(type)
+          );
+        },
+        'to be valid for all',
+        pickone(typeSubset)
+      );
+    });
 
-        describe('with the not flag', () => {
-          it('should succeed', () => {
-            expect(fruitCollection, 'not to contain', 'melons')
-          })
+    describe('with the not flag', () => {
+      it('should succeed', () => {
+        expect(
+          typeSubset,
+          'succeed when asserting',
+          collection,
+          'not to contain',
+          'melons'
+        );
+      });
 
-          it('should fail with a diff', () => {
-            const expectedOutput = expectedOutputForTypeWithNot(type)
+      it('should fail with a diff', () => {
+        expect(
+          type => {
             expect(
-              () => expect(fruitCollection, 'not to contain', 'apple'),
+              () =>
+                expect(
+                  CollectionFactory(type, [
+                    'apple',
+                    'banana',
+                    'strawberry',
+                    'apple'
+                  ]),
+                  'not to contain',
+                  'apple'
+                ),
               'to throw',
-              expectedOutput
-            )
-          })
-        })
-      })
-    })
-})
+              expectedOutputForTypeWithNot(type)
+            );
+          },
+          'to be valid for all',
+          pickone(typeSubset)
+        );
+      });
+    });
+  });
+});
 
 const expectedOutputForType = type => {
   switch (type) {
     case LIST:
     case SEQ:
     case STACK:
-      return (
-        `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) to contain 'pears'\n` +
-          `\n` +
-          `${type}([\n` +
-          `  'apple',\n` +
-          `  'banana',\n` +
-          `  'strawberry',\n` +
-          `  'apple'\n` +
-          `  // missing 'pears'\n` +
-          '])'
-      )
+      return `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) to contain 'pears'\n` +
+        `\n` +
+        `${type}([\n` +
+        `  'apple',\n` +
+        `  'banana',\n` +
+        `  'strawberry',\n` +
+        `  'apple'\n` +
+        `  // missing 'pears'\n` +
+        '])';
     case SET:
     case ORDERED_SET:
-      return (
-        `expected ${type}([ 'apple', 'banana', 'strawberry' ]) to contain 'pears'\n` +
+      return `expected ${type}([ 'apple', 'banana', 'strawberry' ]) to contain 'pears'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple',\n` +
         `  'banana',\n` +
         `  'strawberry'\n` +
         `  // missing 'pears'\n` +
-        '])'
-      )
+        '])';
     default:
-      return ''
+      return '';
   }
-}
+};
 
 const expectedOutputForTypeWithNot = type => {
   switch (type) {
     case LIST:
     case SEQ:
     case STACK:
-      return (
-        `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) not to contain 'apple'\n` +
+      return `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) not to contain 'apple'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple', // should be removed\n` +
         `  'banana',\n` +
         `  'strawberry',\n` +
         `  'apple' // should be removed\n` +
-        '])'
-      )
+        '])';
     case SET:
     case ORDERED_SET:
-      return (
-        `expected ${type}([ 'apple', 'banana', 'strawberry' ]) not to contain 'apple'\n` +
+      return `expected ${type}([ 'apple', 'banana', 'strawberry' ]) not to contain 'apple'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple', // should be removed\n` +
         `  'banana',\n` +
         `  'strawberry'\n` +
-        '])'
-      )
+        '])';
     default:
-      return ''
+      return '';
   }
-}
+};

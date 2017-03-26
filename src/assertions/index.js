@@ -1,9 +1,9 @@
-const collectionAssertions = require('./Collection')
+const collectionAssertions = require('./Collection');
 
 const assertions = {
-  installInto: function (expect) {
-    collectionAssertions(expect)
+  installInto: function(expect) {
+    collectionAssertions(expect);
   }
-}
+};
 
-module.exports = assertions
+module.exports = assertions;

@@ -1,9 +1,9 @@
-const { List } = require('immutable')
+const { List } = require('immutable');
 
 const ListType = {
   name: 'List',
   base: 'Collection',
   identify: value => List.isList(value)
-}
+};
 
-module.exports = ListType
+module.exports = ListType;
