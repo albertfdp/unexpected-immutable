@@ -31,6 +31,12 @@ const expect = unexpected.clone().use(unexpectedImmutable)
 
 ```
 
+### Prior art
+
+Inspired by:
+
+* [chai-immutable](https://github.com/astorije/chai-immutable)
+
 ## License
 
 MIT
