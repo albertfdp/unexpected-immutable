@@ -6,9 +6,10 @@
   "scripts": {
     "test": "jest",
     "format": "prettier --single-quote --write '{src,test}/**/*.js'",
-    "travis": "npm run lint && npm test",
+    "travis": "npm run format && npm test",
     "site:generate": "generate-site --require ./bootstrap-unexpected-markdown.js",
-    "site:update": "generate-site --require ./bootstrap-unexpected-markdown.js --update-examples"
+    "site:update": "generate-site --require ./bootstrap-unexpected-markdown.js --update-examples",
+    "deploy": "gh-pages -d site-build"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "chance-generators": "2.1.0",
+    "gh-pages": "0.12.0",
     "immutable": "^3.8.1",
     "jest": "19.0.2",
     "prettier": "0.22.0",
