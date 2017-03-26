@@ -1,0 +1,30 @@
+[
+  {
+    "label": "to have keys (Map)",
+    "url": "/assertions/Map/to-have-keys/"
+  },
+  {
+    "label": "to have property (Map)",
+    "url": "/assertions/Map/to-have-property/"
+  },
+  {
+    "label": "to be empty (Collection)",
+    "url": "/assertions/Collection/to-be-empty/"
+  },
+  {
+    "label": "to be non empty (Collection)",
+    "url": "/assertions/Collection/to-be-non-empty/"
+  },
+  {
+    "label": "to equal (Collection)",
+    "url": "/assertions/Collection/to-equal/"
+  },
+  {
+    "label": "to have length (Collection)",
+    "url": "/assertions/Collection/to-have-length/"
+  },
+  {
+    "label": "to have size (Collection)",
+    "url": "/assertions/Collection/to-have-size/"
+  }
+]
