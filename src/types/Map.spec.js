@@ -86,4 +86,3 @@ describe('Map type', () => {
     expect([ a, b ], 'to produce a diff of', '?')
   })
 })
-

@@ -121,7 +121,7 @@ const expectedOutputForType = type => {
     case SEQ:
     case STACK:
       return (
-        `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) to contain \'pears\'\n` +
+        `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) to contain 'pears'\n` +
           `\n` +
           `${type}([\n` +
           `  'apple',\n` +
@@ -134,7 +134,7 @@ const expectedOutputForType = type => {
     case SET:
     case ORDERED_SET:
       return (
-        `expected ${type}([ 'apple', 'banana', 'strawberry' ]) to contain \'pears\'\n` +
+        `expected ${type}([ 'apple', 'banana', 'strawberry' ]) to contain 'pears'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple',\n` +
@@ -154,7 +154,7 @@ const expectedOutputForTypeWithNot = type => {
     case SEQ:
     case STACK:
       return (
-        `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) not to contain \'apple\'\n` +
+        `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) not to contain 'apple'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple', // should be removed\n` +
@@ -166,7 +166,7 @@ const expectedOutputForTypeWithNot = type => {
     case SET:
     case ORDERED_SET:
       return (
-        `expected ${type}([ 'apple', 'banana', 'strawberry' ]) not to contain \'apple\'\n` +
+        `expected ${type}([ 'apple', 'banana', 'strawberry' ]) not to contain 'apple'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple', // should be removed\n` +

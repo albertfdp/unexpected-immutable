@@ -28,10 +28,10 @@
     "immutable": "^3.8.1"
   },
   "devDependencies": {
-    "babel-eslint": "^6.0.5",
+    "babel-eslint": "7.2.1",
     "immutable": "^3.8.1",
-    "mocha": "^2.5.3",
-    "standard": "^7.1.2",
+    "mocha": "3.2.0",
+    "standard": "9.0.2",
     "unexpected": "^10.13.3"
   },
   "standard": {
