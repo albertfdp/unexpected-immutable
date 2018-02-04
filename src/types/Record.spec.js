@@ -36,6 +36,29 @@ describe('Record type', () => {
     });
   });
 
+  describe.only('when asserting it with a plain object', () => {
+    it('succeeds', () => {
+      expect(new ABRecord(), 'to satisfy', {
+        a: 1
+      });
+    });
+
+    describe('when failing', () => {
+      expect(
+        () =>
+          expect(new ABRecord({ a: 10, b: 30 }), 'to satisfy', {
+            a: 3
+          }),
+        'to throw',
+        `expected new Record({ a: 10, b: 30 }) to satisfy { a: 3 }\n\n` +
+          `{\n` +
+          `  a: 10, // should equal 3\n` +
+          `  b: 30\n` +
+          `}`
+      );
+    });
+  });
+
   describe('to have property', () => {
     it('suceeds', () => {
       const a = new ABRecord();

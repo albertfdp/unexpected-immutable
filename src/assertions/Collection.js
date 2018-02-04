@@ -39,6 +39,20 @@ const collectionAssertions = function(expect) {
   );
 
   expect.addAssertion(
+    ['<ImmutableRecord> [not] to satisfy <object>'],
+    (expect, subject, object) => {
+      return expect(subject.toJS(), '[not] to satisfy', object);
+    }
+  );
+
+  expect.addAssertion(
+    ['<ImmutableRecord> [not] to equal <object>'],
+    (expect, subject, object) => {
+      return expect(subject.toJS(), '[not] to equal', object);
+    }
+  );
+
+  expect.addAssertion(
     [
       '<ImmutableMap|ImmutableOrderedMap|ImmutableRecord> [not] to have property <string> <assertion?>'
     ],
