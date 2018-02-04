@@ -1,8 +1,8 @@
 const { OrderedMap } = require('immutable');
 
 const OrderedMapType = {
-  name: 'OrderedMap',
-  base: 'Map',
+  name: 'ImmutableOrderedMap',
+  base: 'ImmutableMap',
   identify: value => OrderedMap.isOrderedMap(value)
 };
 

@@ -18,7 +18,7 @@ describe('Map type', () => {
         expect(
           fruitCollection,
           'to inspect as',
-          `${type}({\n` + `  apple: 1,\n` + `  banana: 1\n` + '})'
+          `Immutable${type}({\n` + `  apple: 1,\n` + `  banana: 1\n` + '})'
         );
       });
     });
@@ -42,7 +42,7 @@ describe('Map type', () => {
       expect(
         [fruitCollection, CollectionFactory(type, ['banana', 'strawberry'])],
         'to produce a diff of',
-        `${type}({\n` +
+        `Immutable${type}({\n` +
           `  apple: 1, // should be removed\n` +
           `  banana: 1\n` +
           `  // missing strawberry: 1\n` +
@@ -133,8 +133,8 @@ describe('Map type', () => {
     expect(
       [a, b],
       'to produce a diff of',
-      `Map({\n` +
-        `  numbers: List([\n` +
+      `ImmutableMap({\n` +
+        `  numbers: ImmutableList([\n` +
         `    0,\n` +
         `    1, // should be removed\n` +
         `    2,\n` +
@@ -142,7 +142,7 @@ describe('Map type', () => {
         `    4\n` +
         `    // missing 5\n` +
         `  ]),\n` +
-        `  names: Map({\n` +
+        `  names: ImmutableMap({\n` +
         `    foo: 1,\n` +
         `    bar: 1 // should equal 5\n` +
         `  })\n` +

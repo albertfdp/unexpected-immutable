@@ -3,6 +3,7 @@ const ListType = require('./List');
 const MapType = require('./Map');
 const OrderedMap = require('./OrderedMap');
 const OrderedSetType = require('./OrderedSetType');
+const RecordType = require('./Record');
 const SeqType = require('./Seq');
 const SetType = require('./Set');
 const StackType = require('./Stack');
@@ -14,6 +15,7 @@ const types = {
     expect.addType(MapType);
     expect.addType(OrderedMap);
     expect.addType(OrderedSetType);
+    expect.addType(RecordType);
     expect.addType(SeqType);
     expect.addType(SetType);
     expect.addType(StackType);

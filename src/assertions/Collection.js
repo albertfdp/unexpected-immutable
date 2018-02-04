@@ -1,8 +1,8 @@
 const collectionAssertions = function(expect) {
   expect.addAssertion(
     [
-      '<Collection|Map> [not] to have size <number>',
-      '<Collection|Map> [not] to have length <number>'
+      '<ImmutableCollection|ImmutableMap> [not] to have size <number>',
+      '<ImmutableCollection|ImmutableMap> [not] to have length <number>'
     ],
     (expect, subject, length) => {
       if (!expect.flags.not) {
@@ -13,23 +13,35 @@ const collectionAssertions = function(expect) {
   );
 
   expect.addAssertion(
-    ['<Collection|Map> [not] to be empty'],
+    ['<ImmutableCollection|ImmutableMap> [not] to be empty'],
     (expect, subject) => expect(subject, '[not] to have size', 0)
   );
 
-  expect.addAssertion(['<Collection|Map> to be non-empty'], (expect, subject) =>
-    expect(subject, 'not to be empty')
+  expect.addAssertion(
+    ['<ImmutableCollection|ImmutableMap> to be non-empty'],
+    (expect, subject) => expect(subject, 'not to be empty')
   );
 
   expect.addAssertion(
-    ['<Map|OrderedMap> [not] to have keys <array>'],
+    ['<ImmutableMap|ImmutableOrderedMap> [not] to have keys <array>'],
     (expect, subject, value) => {
       expect(subject.hasIn(value), '[not] to be true');
     }
   );
 
   expect.addAssertion(
-    ['<Map|OrderedMap> [not] to have property <string> <assertion?>'],
+    [
+      '<ImmutableMap|ImmutableOrderedMap|ImmutableRecord> [not] to have property <string>'
+    ],
+    (expect, subject, property) => {
+      return expect(subject.get(property), '[not] to be undefined');
+    }
+  );
+
+  expect.addAssertion(
+    [
+      '<ImmutableMap|ImmutableOrderedMap|ImmutableRecord> [not] to have property <string> <assertion?>'
+    ],
     (expect, subject, property) => {
       expect.shift(subject.get(property));
     }
@@ -37,8 +49,8 @@ const collectionAssertions = function(expect) {
 
   expect.addAssertion(
     [
-      '<Collection> [not] to contain <any+>',
-      '<Collection> [not] to include <any+>'
+      '<ImmutableCollection> [not] to contain <any+>',
+      '<ImmutableCollection> [not] to include <any+>'
     ],
     (expect, subject, value) => {
       expect.withError(

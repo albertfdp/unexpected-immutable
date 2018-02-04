@@ -22,7 +22,7 @@ describe('Immutable types', () => {
         expect(
           fruitCollection,
           'to inspect as',
-          `${type}([ 'apple', 'banana' ])`
+          `Immutable${type}([ 'apple', 'banana' ])`
         );
       });
 
@@ -34,7 +34,7 @@ describe('Immutable types', () => {
         });
 
         it(`inspects the ${type} instance correctly`, () => {
-          expect(emptyCollection, 'to inspect as', `${type}([])`);
+          expect(emptyCollection, 'to inspect as', `Immutable${type}([])`);
         });
       });
 
@@ -50,7 +50,7 @@ describe('Immutable types', () => {
           expect(
             largeCollection,
             'to inspect as',
-            `${type}([ ${items.join(', ')} ])`
+            `Immutable${type}([ ${items.join(', ')} ])`
           );
         });
       });
@@ -78,7 +78,7 @@ describe('Immutable types', () => {
         expect(
           [fruitCollection, CollectionFactory(type, ['banana', 'strawberry'])],
           'to produce a diff of',
-          `${type}([\n` +
+          `Immutable${type}([\n` +
             `  'apple', // should be removed\n` +
             `  'banana'\n` +
             `  // missing 'strawberry'\n` +

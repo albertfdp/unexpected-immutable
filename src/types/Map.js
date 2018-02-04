@@ -1,7 +1,7 @@
 const { is, Map, OrderedMap, Set } = require('immutable');
 
 const MapType = {
-  name: 'Map',
+  name: 'ImmutableMap',
   base: 'object',
   identify: value => Map.isMap(value) && !OrderedMap.isOrderedMap(value),
   getKeys: function(obj) {

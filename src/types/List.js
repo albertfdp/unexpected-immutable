@@ -1,8 +1,8 @@
 const { List } = require('immutable');
 
 const ListType = {
-  name: 'List',
-  base: 'Collection',
+  name: 'ImmutableList',
+  base: 'ImmutableCollection',
   identify: value => List.isList(value)
 };
 

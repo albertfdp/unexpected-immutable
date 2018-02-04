@@ -1,8 +1,8 @@
 const { OrderedSet, Set } = require('immutable');
 
 const SetType = {
-  name: 'Set',
-  base: 'Collection',
+  name: 'ImmutableSet',
+  base: 'ImmutableCollection',
   identify: value => Set.isSet(value) && !OrderedSet.isOrderedSet(value)
 };
 

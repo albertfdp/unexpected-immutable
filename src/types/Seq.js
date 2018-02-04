@@ -1,8 +1,8 @@
 const { Seq } = require('immutable');
 
 const SeqType = {
-  name: 'Seq',
-  base: 'Collection',
+  name: 'ImmutableSeq',
+  base: 'ImmutableCollection',
   identify: value => Seq.isSeq(value)
 };
 

@@ -3,7 +3,7 @@ const { is } = require('immutable');
 const DEFAULT_DEPTH = 3;
 
 const CollectionType = {
-  name: 'Collection',
+  name: 'ImmutableCollection',
   base: 'array-like',
   indent: true,
   identify: false,

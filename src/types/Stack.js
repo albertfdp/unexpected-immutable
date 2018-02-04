@@ -1,8 +1,8 @@
 const { Stack } = require('immutable');
 
 const StackType = {
-  name: 'Stack',
-  base: 'Collection',
+  name: 'ImmutableStack',
+  base: 'ImmutableCollection',
   identify: value => Stack.isStack(value)
 };
 
