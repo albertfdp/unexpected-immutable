@@ -12,37 +12,31 @@ const {
 const CollectionFactory = (type, data) => {
   switch (type) {
     case 'List':
-      return new List(data);
+      return List(data);
     case 'Map': {
-      const keyValue = data.reduce(
-        (previous, current) => {
-          previous[current] = (previous[current] || 0) + 1;
-          return previous;
-        },
-        {}
-      );
-      return new Map(keyValue);
+      const keyValue = data.reduce((previous, current) => {
+        previous[current] = (previous[current] || 0) + 1;
+        return previous;
+      }, {});
+      return Map(keyValue);
     }
     case 'OrderedMap': {
-      const keyValue = data.reduce(
-        (previous, current) => {
-          previous[current] = (previous[current] || 0) + 1;
-          return previous;
-        },
-        {}
-      );
-      return new OrderedMap(keyValue);
+      const keyValue = data.reduce((previous, current) => {
+        previous[current] = (previous[current] || 0) + 1;
+        return previous;
+      }, {});
+      return OrderedMap(keyValue);
     }
     case 'OrderedSet':
-      return new OrderedSet(data);
+      return OrderedSet(data);
     case 'Seq':
-      return new Seq(data);
+      return Seq(data);
     case 'Set':
-      return new Set(data);
+      return Set(data);
     case 'Stack':
-      return new Stack(data);
+      return Stack(data);
     default:
-      return new Collection(data);
+      return Collection(data);
   }
 };
 

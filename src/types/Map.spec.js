@@ -119,12 +119,13 @@ describe('Map type', () => {
   });
 
   it('diffs two complex immutable objects', () => {
-    const a = new Immutable.Map({
+    const a = Immutable.Map({
       numbers: Immutable.List([0, 1, 2, 3, 4]),
       names: Immutable.Map({ foo: 1, bar: 1 })
     });
 
-    const b = new Immutable.Map({
+    const b = Immutable.Map({
+      extraKey: 'What?',
       numbers: Immutable.List([0, 2, 3, 4, 5]),
       names: Immutable.Map({ foo: 1, bar: 5 })
     });
@@ -145,7 +146,8 @@ describe('Map type', () => {
         `    foo: 1,\n` +
         `    bar: 1 // should equal 5\n` +
         `  })\n` +
-        '})'
+        `  // missing extraKey: 'What?'\n` +
+        `})`
     );
   });
 });

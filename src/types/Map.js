@@ -46,11 +46,11 @@ const MapType = {
       return propertyOutput;
     });
 
-    const maxLineLength = output.preferredWith -
-      (depth === Infinity ? 0 : depth) * 2 -
-      2;
+    const maxLineLength =
+      output.preferredWith - (depth === Infinity ? 0 : depth) * 2 - 2;
     let width = 0;
-    const compact = inspectedItems.length > 5 ||
+    const compact =
+      inspectedItems.length > 5 ||
       inspectedItems.every(item => {
         if (item.isMultiline()) {
           return false;
@@ -118,7 +118,7 @@ const MapType = {
     const suffixOutput = this.suffix(output.clone(), actual);
     const actualKeys = this.getKeys(actual);
     const expectedKeys = this.getKeys(expected);
-    const keys = new Set([...actualKeys, ...expectedKeys]).toArray();
+    const keys = Set([...actualKeys, ...expectedKeys]).toArray();
 
     output.append(prefixOutput).nl(prefixOutput.isEmpty() ? 0 : 1);
 

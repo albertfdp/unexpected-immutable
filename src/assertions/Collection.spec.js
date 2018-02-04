@@ -167,7 +167,8 @@ const expectedOutputForType = type => {
     case LIST:
     case SEQ:
     case STACK:
-      return `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) to contain 'pears'\n` +
+      return (
+        `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) to contain 'pears'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple',\n` +
@@ -175,17 +176,20 @@ const expectedOutputForType = type => {
         `  'strawberry',\n` +
         `  'apple'\n` +
         `  // missing 'pears'\n` +
-        '])';
+        '])'
+      );
     case SET:
     case ORDERED_SET:
-      return `expected ${type}([ 'apple', 'banana', 'strawberry' ]) to contain 'pears'\n` +
+      return (
+        `expected ${type}([ 'apple', 'banana', 'strawberry' ]) to contain 'pears'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple',\n` +
         `  'banana',\n` +
         `  'strawberry'\n` +
         `  // missing 'pears'\n` +
-        '])';
+        '])'
+      );
     default:
       return '';
   }
@@ -196,23 +200,27 @@ const expectedOutputForTypeWithNot = type => {
     case LIST:
     case SEQ:
     case STACK:
-      return `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) not to contain 'apple'\n` +
+      return (
+        `expected ${type}([ 'apple', 'banana', 'strawberry', 'apple' ]) not to contain 'apple'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple', // should be removed\n` +
         `  'banana',\n` +
         `  'strawberry',\n` +
         `  'apple' // should be removed\n` +
-        '])';
+        '])'
+      );
     case SET:
     case ORDERED_SET:
-      return `expected ${type}([ 'apple', 'banana', 'strawberry' ]) not to contain 'apple'\n` +
+      return (
+        `expected ${type}([ 'apple', 'banana', 'strawberry' ]) not to contain 'apple'\n` +
         `\n` +
         `${type}([\n` +
         `  'apple', // should be removed\n` +
         `  'banana',\n` +
         `  'strawberry'\n` +
-        '])';
+        '])'
+      );
     default:
       return '';
   }

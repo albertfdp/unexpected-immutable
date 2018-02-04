@@ -33,12 +33,11 @@ const CollectionType = {
     });
 
     const currentDepth = DEFAULT_DEPTH - Math.min(DEFAULT_DEPTH, depth);
-    let maxLineLength = output.preferredWith -
-      20 -
-      currentDepth * output.indentationWidth -
-      2;
+    let maxLineLength =
+      output.preferredWith - 20 - currentDepth * output.indentationWidth - 2;
     let width = 0;
-    const multipleLines = this.forceMultipleLines ||
+    const multipleLines =
+      this.forceMultipleLines ||
       inspectedItems.some(item => {
         if (item.isMultiline()) {
           return true;

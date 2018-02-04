@@ -18,7 +18,8 @@ const collectionAssertions = function(expect) {
   );
 
   expect.addAssertion(['<Collection|Map> to be non-empty'], (expect, subject) =>
-    expect(subject, 'not to be empty'));
+    expect(subject, 'not to be empty')
+  );
 
   expect.addAssertion(
     ['<Map|OrderedMap> [not] to have keys <array>'],
