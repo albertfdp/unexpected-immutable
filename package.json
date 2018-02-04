@@ -31,14 +31,14 @@
     "immutable": "^3.8.1"
   },
   "devDependencies": {
-    "chance-generators": "2.1.0",
-    "gh-pages": "0.12.0",
-    "immutable": "^3.8.1",
-    "jest": "19.0.2",
-    "prettier": "0.22.0",
-    "unexpected": "^10.13.3",
-    "unexpected-check": "1.12.0",
-    "unexpected-documentation-site-generator": "4.3.0",
-    "unexpected-markdown": "1.7.1"
+    "chance-generators": "2.13.1",
+    "gh-pages": "1.1.0",
+    "immutable": "^3.8.2",
+    "jest": "22.1.4",
+    "prettier": "1.10.2",
+    "unexpected": "^10.37.0",
+    "unexpected-check": "1.18.0",
+    "unexpected-documentation-site-generator": "4.6.1",
+    "unexpected-markdown": "1.7.4"
   }
 }
